@@ -1,0 +1,22 @@
+gcloud auth application-default login
+
+npm run embed-documents
+npm start
+
+docker build -t chat-rag:latest .
+docker run -d -p 9091:8080 --name my-ai-rag-app chat-rag:latest
+
+gcloud auth configure-docker us-docker.pkg.dev
+
+docker tag chat-rag:latest us.gcr.io/project-ecdcfdd2-bb6a-4b14-94a/my-ai-rag-app:latest
+docker push us.gcr.io/project-ecdcfdd2-bb6a-4b14-94a/my-ai-rag-app:latest
+
+gcloud run deploy my-ai-rag-app --image us.gcr.io/project-ecdcfdd2-bb6a-4b14-94a/my-ai-rag-app:latest --region=asia-south1
+
+curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' \
+--header "Authorization: Bearer $(gcloud auth print-identity-token)" \
+--header 'Content-Type: application/json' \
+--data '{
+    "text": "Who is Khalid Galal?",
+    "rag": "true"
+}'
