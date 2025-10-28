@@ -206,7 +206,7 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
 
 ## 🔒 Step 9: Test API Endpoint
 
-#### Test Case 1: Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the embeding (ingestion pipeline) to update the Mong Atlas Vector DB
+#### Test Case 1: Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the below embed API (ingestion pipeline) to update the Mongo Atlas Vector DB with uploaded PDF file
 ##### Request Payload
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload' \
@@ -219,6 +219,24 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload'
     "message": "File uploaded successfully to GCS",
     "filename": "pdfs/Khalid_Elmetwally.pdf"
 }
+```
+#### The embed API (ingestion pipeline) which is called by the Cloud function trigger to update the Mongo Atlas Vector DB with uploaded PDF file
+##### Request Payload
+```bash
+curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/embed' \
+--header "Authorization: Bearer $(gcloud auth print-identity-token)" \
+--header 'Content-Type: application/json' \
+--data '{
+    "fileName": "pdfs/Khalid_Elmetwally.pdf"
+}'
+```
+##### Response Payload
+```bash
+{
+    "message": "Successfully downloaded documents and ran the ingestion pipeline.",
+    "source_path": "gs://rag-chat-bot-88/pdfs/"
+}
+```
 ```
 ### Test Case 2: Chat with RAG
 ##### Request Paylaod
