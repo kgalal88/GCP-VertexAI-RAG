@@ -16,6 +16,8 @@ This project implements a **context-aware RAG system** that integrates:
 - **Angular** frontend  
 
 It is a **full-stack reference architecture** for deploying a production-ready RAG chatbot on **Google Cloud Run**.
+<img width="873" height="478" alt="image" src="https://github.com/user-attachments/assets/d20a37c1-cd61-4b70-9580-5d833a1c1e1e" />
+
 
 ---
 
