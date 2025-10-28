@@ -1,0 +1,45 @@
+swagger: '2.0'
+info:
+  title: Cloud Endpoints + Cloud Run
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0
+host: my-ai-rag-app-1091313701655.asia-south1.run.app
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://my-ai-rag-app-1091313701655.asia-south1.run.app
+  protocol: h2
+paths:
+  /messages:
+    post:
+      summary: Post a message
+      operationId: messages
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+    # ------------------------------------------------------------------
+    # ADDED: CORS support via a dedicated OPTIONS method
+    # ------------------------------------------------------------------
+    options:
+      summary: CORS support
+      operationId: cors
+      responses:
+        '200':
+          description: Default response for CORS preflight
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+              description: Allows requests from any origin. Adjust this to a specific domain if needed.
+            Access-Control-Allow-Methods:
+              type: string
+              description: Methods allowed for this resource.
+            Access-Control-Allow-Headers:
+              type: string
+              description: Headers allowed in the actual request.
+            Access-Control-Max-Age:
+              type: number
+              description: How long the results of the preflight request can be cached.

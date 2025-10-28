@@ -73,6 +73,15 @@ export class IngestionPipeline {
 
     const docs = await directoryLoader.load();
     console.log(`Loaded ${docs.length} PDFs from '${this.pdfDirectory}'.`);
+    
+    console.log('\n--- Loaded File Names/Paths ---');
+    docs.forEach((doc, index) => {
+        // Access the 'source' key in the metadata
+        const filePath = doc.metadata.source;
+        
+        // Log the file path, and use a fallback if the source isn't available
+        console.log(`File ${index + 1}: ${filePath || 'Source Not Found'}`);
+    });
     return docs;
   }
 
@@ -120,6 +129,7 @@ export class IngestionPipeline {
     try {
       // 1. Load and Split Documents
       const docs = await this.loadDocuments();
+      
       if (docs.length === 0) {
         console.log("No documents found. Exiting pipeline.");
         return;
@@ -140,7 +150,7 @@ export class IngestionPipeline {
       const result = await vectorStore.addDocuments(splitDocs);
 
       console.log(`\n✅ Success: Imported ${result.length} documents into the MongoDB Atlas vector store.`);
-    } catch (error) {
+
       console.error("\n❌ An error occurred during the ingestion pipeline:", error);
     } finally {
       process.exit(0);
