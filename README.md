@@ -151,18 +151,7 @@ gcloud compute routers nats create rag-chatbot-nat   --router=rag-chatbot-router
 
 ---
 
-## 🔒 Step 6: Test API Endpoint
-
-```bash
-curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
-    "text": "Who is Khalid Galal?",
-    "rag": "true"
-}'
-```
-
----
-
-## 🚪 Step 7: Deploy API Gateway (ESPv2)
+## 🚪 Step 6: Deploy API Gateway (ESPv2)
 
 ```bash
 gcloud endpoints services deploy openapi-run.yaml   --project project-ecdcfdd2-bb6a-4b14-94a
@@ -184,7 +173,7 @@ gcloud projects add-iam-policy-binding 1091313701655        --member "serviceAcc
 
 ---
 
-## ☁️ Step 8: EventArc + Pub/Sub for Embedding Trigger
+## ☁️ Step 7: EventArc + Pub/Sub for Embedding Trigger
 
 ```bash
 SERVICE_ACCOUNT=eventarc-trigger-sa
@@ -199,7 +188,7 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
 
 ---
 
-## 🔍 Step 9: MongoDB Atlas Vector Search Index
+## 🔍 Step 8: MongoDB Atlas Vector Search Index
 
 ```json
 {
@@ -213,7 +202,16 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
   ]
 }
 ```
+---
 
+## 🔒 Step 9: Test API Endpoint
+
+```bash
+curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
+    "text": "Who is Khalid Galal?",
+    "rag": "true"
+}'
+```
 ---
 
 ## ✅ Deployment Complete
