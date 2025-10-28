@@ -218,6 +218,13 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/message
     "rag": "true"
 }'
 ```
+### Response Payload
+```bash
+{"text":"Based on the provided text, there is no mention of anyone named Khalid Galal. There is, however, a **Khalid Elmetwally**.\n\nHere's what we know about Khalid Elmetwally from the provided text:\n\n*   **Current Role:** Software Solutions Architect 
+at Saudi Telecom Company (STC Group) in Riyadh (October 2023 - Present)\n*   **Previous Roles:**\n    *   Software Technical Lead/Architect at Ericsson, Cairo (December 2022 – October 2023)\n    *   Sr. Software Technical Lead/Architect at Jumia Services, 
+Jumia Group, Cairo (May 2021 – November 2022)\n    *   Software Technical Lead/Architect at SiliconExpert Technologies, an Arrow company, Cairo (April 2011 – April 2021)\n*   **Skills:** Java JEE, Java 8+, Spring Boot, Hibernate, Python, Node.JS, Microservices, Kafka, RabbitMq, Docker, Kubernetes, Openshift, AWS, GCP, Maven, Jenkins, Sonar Qube\n*   **Contact Information:**\n    * 
+  Address: 27 Abi Sufyan Bin Harb Street, An Nuzhah District, Riyadh, Saudi Arabia\n    *   Phone: +966506195251\n    *   Email: khalid.mtwaly@gmail.com\n*   **Summary:** A Google Cloud (GCP) Certified Professional Cloud Architect with 15+ years of experience in designing and implementing software solutions, specializing in microservices, cloud-native technologies, and API integrations.\n\nIt's possible \"Khalid Galal\" is a different person, or a nickname/alternate spelling for Khalid Elmetwally, but the information provided only details Khalid Elmetwally.\n"}
+```
 
 ---
 
