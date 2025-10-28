@@ -206,42 +206,44 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
 
 ## 🔒 Step 9: Test API Endpoint
 
-### Request Payload (Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the embeding (ingestion pipeline) to update the Mong Atlas Vector DB
+##### Request Payload (Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the embeding (ingestion pipeline) to update the Mong Atlas Vector DB)
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload' \
 --header "Authorization: Bearer $(gcloud auth print-identity-token)" \
 --form 'file=@"/D:/materials/GCP/rag-chatbot/pdfs/Khalid_Elmetwally.pdf"'
 ```
-### Response Payload
+##### Response Payload
 ```bash
 {
     "message": "File uploaded successfully to GCS",
     "filename": "pdfs/Khalid_Elmetwally.pdf"
 }
 ```
-### Request Paylaod (With RAG)
+##### Request Paylaod (With RAG)
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
     "text": "Who is Khalid?",
     "rag": "true"
 }'
 ```
-### Response Payload
+##### Response Payload
 ```bash
 {
     "text": "Based on the provided text, Khalid Elmetwally is a Software Solutions Architect with over 15 years of experience. He is a Google Cloud (GCP) Certified Professional Cloud Architect. He currently works at Saudi Telecom Company (STC Group) in Riyadh. Previously, he was a Sr. Software Technical Lead/Architect at Jumia Services, Jumia Group in Cairo. He has expertise in microservices architecture, cloud-native technologies, and API integrations. He is proficient in Java, Spring Boot, and Kubernetes, among other technologies.\n"
 }
 ```
-### Request Paylaod (Without RAG)
+##### Request Paylaod (Without RAG)
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
     "text": "Who is Khalid?"
 }'
 ```
-### Response Payload
+##### Response Payload
 ```bash
 {
-    "text": ""
+    "text": "{
+    "text": "Khalid Donnel Robinson (born February 11, 1998), most famously known as Khalid, is an American singer and songwriter. He's known for his smooth vocals and introspective lyrics, often exploring themes of youth, love, and identity.\n\nHere are some key things to know about him:\n\n*   **Genre:** Primarily R&B and pop, but he also incorporates elements of soul and electronic music.\n*   **Breakthrough:** He rose to prominence in 2016 with his debut single \"Location,\" which became a viral hit.\n*   **Albums:** He has released several successful albums, including \"American Teen\" (2017), \"Free Spirit\" (2019), and \"Everything Is Changing\" (2024).\n*   **Collaborations:** He has collaborated with many popular artists, including Billie Eilish, Post Malone, Normani, Shawn Mendes, and Marshmello.\n*   **Awards and Recognition:** He has received numerous awards and nominations, including multiple Grammy Award nominations, American Music Awards, and Billboard Music Awards.\n*   **Popular Songs:** Some of his most popular songs include \"Location,\" \"Young Dumb & Broke,\" \"Better,\" \"Talk,\" and \"Lovely\" (with Billie Eilish).\n\nIn short, Khalid is a well-known and successful contemporary singer-songwriter with a significant impact on the modern music scene."
+}"
 }
 ```
 
