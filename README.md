@@ -234,6 +234,19 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/message
     "text": "Based on the provided text, Khalid Elmetwally is a Software Solutions Architect with over 15 years of experience. He is a Google Cloud (GCP) Certified Professional Cloud Architect. He currently works at Saudi Telecom Company (STC Group) in Riyadh. Previously, he was a Sr. Software Technical Lead/Architect at Jumia Services, Jumia Group in Cairo. He has expertise in microservices architecture, cloud-native technologies, and API integrations. He is proficient in Java, Spring Boot, and Kubernetes, among other technologies.\n"
 }
 ```
+##### Request Paylaod
+```bash
+curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
+    "text": "Summarize his experience?",
+    "rag": "true"
+}'
+```
+##### Response Payload
+```bash
+{
+    "text": "Here's a summary of his experience, based on the provided context:\n\nKhalid has extensive experience as a Software Technical Lead/Architect, focusing on API integrations, microservices architecture, and cloud-native technologies.\n\n*   **Jumia Services:** He integrated Jumia's ERP with tax authorities' APIs across multiple countries, developed APIs for BI reporting, optimized product categorization, and implemented security measures using hardware tokens. He also focused on system performance improvements using monitoring tools.\n*   **SiliconExpert Technologies:** He integrated SiliconExpert products with Zendesk, developed a migration tool for customer tickets, and led the construction of the SiliconExpert BOM Manager.\n*   **STC Group:** He automated billing and invoicing between SEC and STC ERP systems, developed a microservices application for financial planning and allocation, and migrated deployments from Kubernetes to OpenShift.\n*   **Ericsson:** He designed and implemented an IAM Proxy API and migrated Uplink Interference Optimizers to a microservices-based architecture for cloud deployment.\n\nHis technology stack includes Java, Spring Boot, Kafka, Postgres, AWS, Apigee, Kubernetes, and OpenShift. He has a proven track record of leading technical initiatives, enhancing system performance, and integrating various systems and services.\n"
+}
+```
 ### Test Case 3: Chat without RAG
 ##### Request Paylaod
 ```bash
