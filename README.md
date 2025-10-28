@@ -81,7 +81,7 @@ Ensure you have:
 - Docker and Node.js (>=18)
 - Project ID: `project-ecdcfdd2-bb6a-4b14-94a`
 - Region: `asia-south1`
-
+```
 ---
 
 ## ⚙️ Step 1: Authentication & Environment Setup
