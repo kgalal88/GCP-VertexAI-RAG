@@ -173,7 +173,7 @@ gcloud projects add-iam-policy-binding 1091313701655        --member "serviceAcc
 
 ---
 
-## ☁️ Step 7: EventArc + Pub/Sub for Embedding Trigger
+## ☁️ Step 7: EventArc for Embedding Trigger
 
 ```bash
 SERVICE_ACCOUNT=eventarc-trigger-sa
