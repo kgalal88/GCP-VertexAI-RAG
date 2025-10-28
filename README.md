@@ -220,7 +220,7 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload'
     "filename": "pdfs/Khalid_Elmetwally.pdf"
 }
 ```
-#### Test Case2: The embed API (ingestion pipeline) which is called by the Cloud function trigger to update the Mongo Atlas Vector DB with uploaded PDF file
+#### Test Case 2: The embed API (ingestion pipeline) which is called by the Cloud function trigger to update the Mongo Atlas Vector DB with uploaded PDF file
 ##### Request Payload
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/embed' \
