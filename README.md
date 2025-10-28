@@ -206,7 +206,8 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
 
 ## 🔒 Step 9: Test API Endpoint
 
-##### Request Payload (Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the embeding (ingestion pipeline) to update the Mong Atlas Vector DB)
+#### Test Case 1: Upload a PDF file to GCP Cloud Storage Bucket to trigger a Cloud Function to trigger the embeding (ingestion pipeline) to update the Mong Atlas Vector DB
+##### Request Payload
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload' \
 --header "Authorization: Bearer $(gcloud auth print-identity-token)" \
@@ -219,7 +220,8 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload'
     "filename": "pdfs/Khalid_Elmetwally.pdf"
 }
 ```
-##### Request Paylaod (With RAG)
+### Test Case 2: Chat with RAG
+##### Request Paylaod
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
     "text": "Who is Khalid?",
@@ -232,7 +234,8 @@ curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/message
     "text": "Based on the provided text, Khalid Elmetwally is a Software Solutions Architect with over 15 years of experience. He is a Google Cloud (GCP) Certified Professional Cloud Architect. He currently works at Saudi Telecom Company (STC Group) in Riyadh. Previously, he was a Sr. Software Technical Lead/Architect at Jumia Services, Jumia Group in Cairo. He has expertise in microservices architecture, cloud-native technologies, and API integrations. He is proficient in Java, Spring Boot, and Kubernetes, among other technologies.\n"
 }
 ```
-##### Request Paylaod (Without RAG)
+### Test Case 3: Chat without RAG
+##### Request Paylaod
 ```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
     "text": "Who is Khalid?"
