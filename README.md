@@ -103,7 +103,6 @@ gcloud config set eventarc/location ${REGION}
 ## 🧩 Step 2: Build and Run Backend (RAG API)
 
 ```bash
-npm run embed-documents
 npm start
 ```
 
@@ -191,15 +190,9 @@ gcloud projects add-iam-policy-binding 1091313701655        --member "serviceAcc
 SERVICE_ACCOUNT=eventarc-trigger-sa
 gcloud iam service-accounts create $SERVICE_ACCOUNT
 
-gcloud pubsub topics create rag-chatbot-topic
-gcloud pubsub subscriptions create rag-chatbot-topic-subscriber --topic=rag-chatbot-topic
-
 gcloud run deploy rag-chatbot-function     --source .     --function embedFromGCS     --base-image nodejs22
 
 gcloud projects add-iam-policy-binding 1091313701655     --member=serviceAccount:1091313701655-compute@developer.gserviceaccount.com     --role=roles/eventarc.eventReceiver
-
-SERVICE_ACCOUNT="$(gcloud storage service-agent --project=1091313701655)"
-gcloud projects add-iam-policy-binding 1091313701655     --member="serviceAccount:${SERVICE_ACCOUNT}"     --role='roles/pubsub.publisher'
 
 gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}     --destination-run-service=rag-chatbot-function      --destination-run-region=${REGION}     --event-filters="type=google.cloud.storage.object.v1.finalized"     --event-filters="bucket=rag-chat-bot-88"     --service-account=1091313701655-compute@developer.gserviceaccount.com
 ```
