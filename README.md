@@ -1,7 +1,68 @@
-🤖 GCP-VertexAI-RAG: Context-Aware Chatbot with Gemini and MongoDB Atlas💡 Project GoalThis project implements a Retrieval Augmented Generation (RAG) system designed to provide context-specific answers using a combination of Google Cloud Vertex AI (Gemini) and MongoDB Atlas as the vector store.The structure is a full-stack application demonstrating the entire RAG pipeline—from document ingestion and vectorization to API serving and frontend interaction.⚙️ Technical Stack & StructureThe repository is built around a standard Node.js/Express backend and an Angular frontend, with configuration for containerization and cloud deployment.Core TechnologiesLayerTechnologyKey Files/FoldersOrchestrationLangchainsrc/ (Handling RAG logic)LLM & EmbeddingsGoogle Vertex AI (Gemini 1.0 Pro)src/ (API calls)Vector DatabaseMongoDB Atlas.env (Connection string)BackendExpress.js (TypeScript)src/, package.json, tsconfig.jsonFrontendAngular (with Angular Material)client/ContainerizationDockerDockerfileDeploymentGoogle Cloud Rungcloud_build_image, openapi-run.yamlRepository ContentsFolder/FilePurposeclient/The complete Angular frontend application for the chat interface.src/The Express.js backend logic written in TypeScript, containing the RAG endpoint and Langchain setup.eventarc/Files related to Eventarc triggers for event-driven workflows (e.g., handling new document uploads).DockerfileInstructions for building a Docker image of the application for deployment.gcloud_build_imageA shell script to automate the process of building the Docker image and pushing it to Google Artifact Registry.openapi-run.yamlAn OpenAPI configuration likely used for deploying to Google Cloud Run or API Gateway.package.jsonDefines project dependencies and scripts (start, embed-documents).⚡ Quick Start (Local Development)1. PrerequisitesMake sure you have Node.js installed and access to Google Cloud and MongoDB Atlas.2. SetupClone the repository:Bashgit clone https://github.com/kgalal88/GCP-VertexAI-RAG.git
+# 🤖 GCP VertexAI RAG — Context-Aware Chatbot with Gemini & MongoDB Atlas
+
+A **Retrieval Augmented Generation (RAG)** chatbot powered by **Google Cloud Vertex AI (Gemini)** and **MongoDB Atlas**, designed to provide context-specific answers by combining document retrieval and generative AI.
+
+This project demonstrates a complete RAG pipeline — from document ingestion and vectorization to API serving and an Angular-based user interface.
+
+---
+
+## 💡 Project Goal
+
+This project implements a **context-aware RAG system** that integrates:
+- **Google Vertex AI (Gemini 1.0 Pro)** for LLM and embeddings  
+- **MongoDB Atlas** as the vector store  
+- **LangChain** for RAG orchestration  
+- **Node.js / Express.js** backend  
+- **Angular** frontend  
+
+It is a **full-stack reference architecture** for deploying a production-ready RAG chatbot on **Google Cloud Run**.
+
+---
+
+## ⚙️ Technical Stack & Structure
+
+| Layer | Technology | Key Files/Folders |
+|-------|-------------|-------------------|
+| **Orchestration** | LangChain | `src/` (RAG logic) |
+| **LLM & Embeddings** | Google Vertex AI (Gemini 1.0 Pro) | `src/` (API calls) |
+| **Vector Database** | MongoDB Atlas | `.env` (connection string) |
+| **Backend** | Express.js (TypeScript) | `src/`, `package.json`, `tsconfig.json` |
+| **Frontend** | Angular + Angular Material | `client/` |
+| **Containerization** | Docker | `Dockerfile` |
+| **Deployment** | Google Cloud Run | `gcloud_build_image`, `openapi-run.yaml` |
+
+---
+
+## 📁 Repository Contents
+
+| Folder/File | Purpose |
+|--------------|----------|
+| `client/` | Angular frontend for chat interface |
+| `src/` | Express.js backend logic (TypeScript), including RAG endpoint and LangChain setup |
+| `eventarc/` | Eventarc trigger configurations for event-driven document ingestion |
+| `Dockerfile` | Instructions for building the Docker image |
+| `gcloud_build_image` | Shell script to automate Docker image build and push to Google Artifact Registry |
+| `openapi-run.yaml` | OpenAPI configuration for Cloud Run or API Gateway deployment |
+| `package.json` | Defines project dependencies and scripts (`start`, `embed-documents`) |
+
+---
+
+## ⚡ Quick Start (Local Development)
+
+### 🧩 Prerequisites
+Ensure the following are installed and configured:
+- [Node.js](https://nodejs.org/) (v18+)
+- Access to **Google Cloud Vertex AI**
+- A **MongoDB Atlas** cluster
+
+---
+
+### 🚀 Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/kgalal88/GCP-VertexAI-RAG.git
 cd GCP-VertexAI-RAG
-Configure Environment:Create a file named .env in the root directory and add your MongoDB Atlas connection string:ATLAS_URI=<your-mongodb-atlas-connection-string>
-Embed Documents:Run the script to process sample documents, generate embeddings using the Google Cloud model, and store them in your Atlas database:Bashnpm run embed-documents
-Run Application:Start the Express server and Angular client concurrently:Bashnpm start
-The application will be accessible in your browser at http://localhost:4200.☁️ Deployment to Google CloudThis project is structured for deployment using Docker and Google Cloud Run.1. Build and Push Container ImageThe provided script automates containerization and publishing:Bash./gcloud_build_image
-This script uses the Dockerfile to create the application image and pushes it to the configured Google Artifact Registry.2. Deploy to Cloud RunAfter the image is pushed, use the gcloud CLI or the Cloud Console to deploy the image as a new Cloud Run service, using the settings specified in the openapi-run.yaml file for configuration.
+
+# Create environment configuration
+echo "ATLAS_URI=<your-mongodb-atlas-connection-string>" > .env
