@@ -207,11 +207,18 @@ gcloud eventarc triggers create rag-chatbot-trigger      --location=${REGION}   
 ## 🔒 Step 9: Test API Endpoint
 
 ```bash
+curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/upload' \
+--header "Authorization: Bearer $(gcloud auth print-identity-token)" \
+--form 'file=@"/D:/materials/GCP/rag-chatbot/pdfs/sjuk-olycksfallsforsakring-summary-english.pdf"'
+```
+
+```bash
 curl --location 'https://my-ai-rag-app-1091313701655.asia-south1.run.app/messages' --header "Authorization: Bearer $(gcloud auth print-identity-token)" --header 'Content-Type: application/json' --data '{
     "text": "Who is Khalid Galal?",
     "rag": "true"
 }'
 ```
+
 ---
 
 ## ✅ Deployment Complete
