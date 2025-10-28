@@ -273,3 +273,5 @@ Your RAG Chatbot is now deployed with:
 - MongoDB Atlas vector search
 - Event-driven GCS document embedding
 
+## Link to Medium article
+https://medium.com/@khalid.mtwaly/building-a-context-aware-chatbot-with-google-cloud-vertex-ai-and-rag-node-js-d28c766e8631
